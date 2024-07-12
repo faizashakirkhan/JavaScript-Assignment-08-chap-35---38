@@ -131,11 +131,18 @@ alert("Area of Rectangle: " + area);
 // forward, e.g., madam.
 
 function isPalindrome(str) {
-    const reversedStr = str.split('').reverse().join('');
-    return str === reversedStr;
-  }
-  document.write(isPalindrome('madam')); // true
-document.write(isPalindrome('hello')); // false
+    var len = str.length;
+    for (var i = 0; i < len / 2; i++) {
+        if (str[i] !== str[len - i - 1]){//madam 5-1-1
+            return str+ " is not a palindrome"
+        }else{
+              return str+ " is a palindrome"
+        }
+    }
+}
+console.log(isPalindrome("madam"))
+console.log(isPalindrome("majkf"))
+console.log(isPalindrome(prompt("Enter a word:")))
 
 // 11. Write a JavaScript function that accepts a string as a
 // parameter and converts the first letter of each word of the
@@ -143,12 +150,16 @@ document.write(isPalindrome('hello')); // false
 // EXAMPLE STRING : 'the quick brown fox'
 // EXPECTED OUTPUT : 'The Quick Brown Fox'
 
-function capitalizeFirstLetter(str) {
-    return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  }
-  const inputStr = 'the quick brown fox';
-const outputStr = capitalizeFirstLetter(inputStr);
-document.write(outputStr); // "The Quick Brown Fox"
+function titleCase(str){
+    var str=prompt("enter any sentence:");
+    var words=str.split(" ");
+    var titleCase=" ";
+    for(i=0;i<words.length;i++){
+        titleCase +=words[i].charAt(0).toUpperCase()+words[i].slice(1).toLowerCase()+ " ";
+    }
+    return titleCase;
+}
+console.log(titleCase());
 
 // 12. Write a JavaScript function that accepts a string as a
 // parameter and find the longest word within the string.
@@ -176,13 +187,19 @@ document.write(longestWord); // "Development"
 // occurrences of the specified letter within the string.
 // Sample arguments : 'JSResourceS.com', 'o'
 
-function countLetterOccurrences(str, letter) {
-    return str.toLowerCase().split('').filter(c => c === letter.toLowerCase()).length;
-  }
-  const str = 'JSResourceS.com';
-const letter = 'o';
-const count = countLetterOccurrences(str, letter);
-document.write(count); // 2
+function countLetterOccurrence(str, letter){
+         var count = 0;
+        for(var i =0; i< str.length; i++){
+             if(str[i].toLowerCase()===letter.toLowerCase()){ //javascript,   a
+                count++
+        }
+         }
+    return count;
+    }
+    var string = prompt("Enter a string");
+     var ltr= prompt("Enter a letter");
+    alert(countLetterOccurrence(string, ltr))
+     alert(countLetterOccurrence("jAvascripta", "A"))
 
 // 14. The Geometrizer
 // Create 2 functions that calculate properties of a circle, using
@@ -199,14 +216,16 @@ document.write(count); // 2
 // Circumference of circle = 2πr
 // Area of circle = πr2
 
-const PI = Math.PI;
-
-function calcCircumference(radius) {
-  const circumference = 2 * PI * radius;
-  document.write(`The circumference is ${circumference.toFixed(2)}`);
+var r = +prompt("Enter radius Value");
+function circumfarance(radius){
+    var pi = Math.PI
+    var circum = 2*pi*radius
+    return "The circumfarance of circle is " +circum;
 }
-
-function calcArea(radius) {
-  const area = PI * radius ** 2;
-  document.write(`The area is ${area.toFixed(2)}`);
+function area(radius){
+    var area = Math.PI*Math.pow(radius,2)
+    return "The area of circle is " + area.toFixed(2);
 }
+console.log(circumfarance(r))
+console.log(area(r));
+
